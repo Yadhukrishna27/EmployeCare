@@ -5,7 +5,7 @@ import { deleteData } from '../redux/employeslice';
 
 function Employetab() {
 
-    const { items } = useSelector((state) => state.employeReducer)
+    const { employe } = useSelector((state) => state.employeReducer)
     const dispatch = useDispatch()
     return (
         <>
@@ -14,7 +14,7 @@ function Employetab() {
 
                 {
 
-                    items?.length > 0 ?
+                    employe?.length > 0 ?
                         <table className='table table-striped'>
                             <thead>
                                 <tr>
@@ -31,7 +31,7 @@ function Employetab() {
 
 
                                 {
-                                    items?.map(item => (
+                                    employe?.map(item => (
                                         <tr key={item.id}>
                                             <td>{item.id}</td>
                                             <td>{item.name}</td>
@@ -40,7 +40,7 @@ function Employetab() {
                                             <td>{item.department}</td>
                                             <td>{item.salary}</td>
                                             <td className='d-flex'>
-                                                <Edit />
+                                                <Edit key={item.id} data={item}/>
                                                 <button className='btn' onClick={() => { dispatch(deleteData(item.id)) }}>
                                                     <i className="fa-solid fa-trash fa-xl" style={{ color: "#98060e", }} />
                                                 </button>

@@ -5,11 +5,12 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { useDispatch } from 'react-redux';
 import { updateData } from '../redux/employeslice';
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
+import { useSelector } from 'react-redux';
 
 
+function Edit({ data }) {
 
-function Edit() {
 
     const [show, setShow] = useState(false);
     const dispatch = useDispatch()
@@ -24,20 +25,20 @@ function Edit() {
     const handleShow = () => {
         setShow(true)
         setVal({
-            ...val, id: data.id, name: data.name, email: data.email,
+            id: data.id, name: data.name, email: data.email,
             phone: data.phone, department: data.department, salary: data.salary
         })
     }
 
     const handleUpdate = () => {
 
-        const { id, name, email, phone, department, salary  } = val
+        const { id, name, email, phone, department, salary } = val
         if (!id || !name || !email || !phone || !department || !salary) {
             toast.error("Enter Valid Inputs")
         } else {
             handleClose()
             dispatch(updateData(val))
-            setVal({ id: "", name: "", email: "", phone: "", department: "",salary:"" })
+            setVal({ id: "", name: "", email: "", phone: "", department: "", salary: "" })
         }
 
     }
@@ -58,19 +59,19 @@ function Edit() {
                 </Modal.Header>
                 <Modal.Body className='bg'>
                     <FloatingLabel controlId="text" label="Enter Name" className="mb-3">
-                        <Form.Control type="text" placeholder="" value={val.name}  onChange={(e) => { setVal({ ...input, name: e.target.value }) }} />
+                        <Form.Control type="text" placeholder="" value={val.name} onChange={(e) => { setVal({ ...val, name: e.target.value }) }} />
                     </FloatingLabel>
                     <FloatingLabel controlId="text" label="Enter Email" className="mb-3">
-                        <Form.Control type="text" placeholder="" value={val.email} onChange={(e) => { setVal({ ...input, email: e.target.value }) }} />
+                        <Form.Control type="text" placeholder="" value={val.email} onChange={(e) => { setVal({ ...val, email: e.target.value }) }} />
                     </FloatingLabel>
                     <FloatingLabel controlId="text" label="Enter Phone" className="mb-3">
-                        <Form.Control type="text" placeholder="" value={val.phone} onChange={(e) => { setVal({ ...input, phone: e.target.value }) }} />
+                        <Form.Control type="number" placeholder="" value={val.phone} onChange={(e) => { setVal({ ...val, phone: e.target.value }) }} />
                     </FloatingLabel>
                     <FloatingLabel controlId="text" label="Enter Department" className="mb-3">
-                        <Form.Control type="number" placeholder="" value={val.department} onChange={(e) => { setVal({ ...input, department: e.target.value }) }} />
+                        <Form.Control type="text" placeholder="" value={val.department} onChange={(e) => { setVal({ ...val, department: e.target.value }) }} />
                     </FloatingLabel>
                     <FloatingLabel controlId="text" label="Enter Salary" className="mb-3">
-                        <Form.Control type="number" placeholder="" value={val.salary} onChange={(e) => { setVal({ ...input, salary: e.target.value }) }} />
+                        <Form.Control type="number" placeholder="" value={val.salary} onChange={(e) => { setVal({ ...val, salary: e.target.value }) }} />
                     </FloatingLabel>
 
                 </Modal.Body>

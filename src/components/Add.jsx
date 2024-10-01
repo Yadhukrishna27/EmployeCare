@@ -5,7 +5,7 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { addData } from '../redux/employeslice';
 import { useDispatch } from 'react-redux';
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
 
 function Add() {
     const [show, setShow] = useState(false);

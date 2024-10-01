@@ -4,6 +4,7 @@ import Landing from './pages/Landing'
 import Home from './pages/Home'
 import Footer from './components/Footer'
 import { Routes,Route } from 'react-router-dom'
+import { Toaster } from 'react-hot-toast'
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Route exact path="/home" element={<Home/>} />
       </Routes>
       <Footer />
+      <Toaster/>
     </>
   )
 }

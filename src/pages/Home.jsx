@@ -1,7 +1,7 @@
 import React from 'react'
 import Employetab from '../components/Employetab'
 import Add from '../components/Add'
-
+import { useSelector } from 'react-redux'
 
 function Home() {
   return (
@@ -16,8 +16,7 @@ function Home() {
               <input type="text" placeholder='Search Employe' className='form-control w-53 ms-4 ' />
 
             </div>
-            <Employetab />
-
+                <Employetab />
           </div>
         </div>
       </div>
